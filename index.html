@@ -205,6 +205,16 @@
       font-size: 14px;
     }
 
+    /* ---------- AI Usage ---------- */
+    .ai-usage p { margin: 0 0 6px; font-size: 15px; color: #374151; }
+    .ai-usage .label {
+      display: inline-block;
+      width: 70px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .ai-usage em { color: #374151; }
+
     /* ---------- Footer ---------- */
     footer {
       max-width: var(--max-w);
@@ -233,6 +243,7 @@
       <a href="#about">About</a>
       <a href="#education">Education</a>
       <a href="#projects">Projects</a>
+      <a href="#ai-usage">AI Usage</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
@@ -399,6 +410,18 @@
         <p>Mentored 2 incoming students on academic planning and campus
            adjustment through regular one-on-one sessions.</p>
       </div>
+    </section>
+
+    <!-- ===== AI Usage ===== -->
+    <section id="ai-usage" class="ai-usage">
+      <h2>AI Usage</h2>
+      <p>
+        This website was scaffolded and styled with the help of an AI coding
+        assistant. The minimal / clean theme, layout, and section structure
+        below were generated and then customized to fit my CV.
+      </p>
+      <p style="margin-top:12px;"><span class="label">Tool</span> Claude (Anthropic)</p>
+      <p><span class="label">Prompt</span> <em>"Build a static personal website in the repo root. Use assets/profile.jpg as the profile image. Link assets/cv.pdf from the CV section. Keep the site simple and compatible with GitHub Pages. Apply a minimal / clean theme (black, white, one accent). Make the page responsive and accessible."</em></p>
     </section>
 
     <!-- ===== Contact ===== -->
