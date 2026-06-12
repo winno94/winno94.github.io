@@ -1,7 +1,420 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seokhyeon Lee — Personal Page</title>
+  <meta name="description" content="Seokhyeon Lee — CSE undergraduate at Seoul National University, interested in physical AI, computer vision, and efficient large-scale language models." />
+  <style>
+    /* ---------- Minimal / Clean theme ---------- */
+    :root {
+      --bg: #ffffff;
+      --fg: #111111;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --radius: 8px;
+      --max-w: 760px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans KR", sans-serif;
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+    /* ---------- Layout ---------- */
+    nav {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 24px 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+    }
+    nav .brand { font-weight: 600; letter-spacing: -0.01em; }
+    nav .links a { color: var(--muted); margin-left: 18px; }
+    nav .links a:hover { color: var(--fg); text-decoration: none; }
+
+    main {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 64px 24px 96px;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      margin-bottom: 72px;
+      flex-wrap: wrap;
+    }
+    .hero img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #f3f4f6;
+      border: 1px solid var(--line);
+    }
+    .hero .intro h1 {
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 0 0 8px;
+    }
+    .hero .intro p {
+      color: var(--muted);
+      margin: 0 0 16px;
+      font-size: 15px;
+    }
+    .hero .cta a {
+      display: inline-block;
+      padding: 8px 16px;
+      margin-right: 8px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: var(--fg);
+      font-size: 14px;
+      transition: all 0.15s;
+    }
+    .hero .cta a.primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .hero .cta a:hover { text-decoration: none; transform: translateY(-1px); }
+    .hero .cta a.primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+
+    /* ---------- Sections ---------- */
+    section { margin-bottom: 56px; }
+    h2 {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin: 0 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    /* ---------- Education ---------- */
+    .edu p { margin: 0 0 4px; }
+    .edu .school { font-weight: 600; }
+    .edu .date { color: var(--muted); font-size: 14px; }
+
+    .coursework { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 12px; }
+    .coursework h4 {
+      font-size: 13px;
+      font-weight: 600;
+      margin: 0 0 6px;
+      color: var(--fg);
+    }
+    .coursework ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 14px;
+      color: #374151;
+    }
+    .coursework li { padding: 2px 0; }
+    @media (max-width: 600px) {
+      .coursework { grid-template-columns: 1fr; }
+    }
+
+    /* ---------- Projects ---------- */
+    .projects { display: grid; gap: 4px; }
+    .project {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .project:last-child { border-bottom: none; }
+    .project .head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 2px;
+    }
+    .project h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .project .date {
+      font-size: 13px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .project .stack {
+      font-size: 13px;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+    .project ul {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 15px;
+      color: #374151;
+    }
+    .project li { margin-bottom: 4px; }
+
+    /* ---------- Skills ---------- */
+    .skills p { margin: 0 0 6px; font-size: 15px; }
+    .skills .label {
+      display: inline-block;
+      width: 130px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* ---------- Extracurricular ---------- */
+    .extra .item { padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .extra .item:last-child { border-bottom: none; }
+    .extra .head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .extra h3 { margin: 0; font-size: 15px; font-weight: 600; }
+    .extra .role { font-size: 14px; color: var(--muted); font-style: italic; margin: 2px 0 6px; }
+    .extra .date { font-size: 13px; color: var(--muted); white-space: nowrap; }
+    .extra p { margin: 0; font-size: 14px; color: #374151; }
+
+    /* ---------- Contact ---------- */
+    .contact ul { list-style: none; padding: 0; margin: 0; }
+    .contact li { margin-bottom: 6px; font-size: 15px; }
+    .contact .label {
+      display: inline-block;
+      width: 80px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 24px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 600px) {
+      main { padding: 40px 20px 64px; }
+      .hero { gap: 20px; margin-bottom: 48px; }
+      .hero img { width: 96px; height: 96px; }
+      .hero .intro h1 { font-size: 26px; }
+      nav .links a { margin-left: 12px; }
+    }
+  </style>
+</head>
 <body>
-  <h1>Welcome to my Personal Page</h1>
-  <p>Hosted on GitHub Pages!</p>
+  <nav>
+    <div class="brand">Seokhyeon Lee</div>
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <img src="assets/profile.jpg" alt="Seokhyeon Lee profile photo"
+           onerror="this.style.background='#e5e7eb';this.removeAttribute('src');" />
+      <div class="intro">
+        <h1>Seokhyeon Lee</h1>
+        <p>B.S. in Computer Science &amp; Engineering · Seoul National University</p>
+        <div class="cta">
+          <a class="primary" href="assets/cv.pdf" target="_blank" rel="noopener">View CV</a>
+          <a href="#contact">Get in touch</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        Third-year undergraduate in Computer Science and Engineering at Seoul
+        National University. Passionate about <strong>physical AI</strong>,
+        leveraging <strong>computer vision</strong> to improve human quality of
+        life, and building <strong>efficient large-scale language models</strong>.
+        Eager to advance AI systems that are both practically impactful and
+        computationally sustainable.
+      </p>
+    </section>
+
+    <!-- ===== Education ===== -->
+    <section id="education" class="edu">
+      <h2>Education</h2>
+      <p class="school">Seoul National University</p>
+      <p>B.S. Department of Computer Science and Engineering</p>
+      <p class="date">Mar. 2024 – Present</p>
+
+      <div class="coursework">
+        <div>
+          <h4>Completed</h4>
+          <ul>
+            <li>Logic Design</li>
+            <li>Computer Programming</li>
+            <li>Discrete Mathematics</li>
+            <li>Algorithms</li>
+            <li>AI and Law</li>
+          </ul>
+        </div>
+        <div>
+          <h4>In Progress</h4>
+          <ul>
+            <li>Data Structure</li>
+            <li>Computer Architecture</li>
+            <li>Advanced Algorithms (grad.)</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Planned</h4>
+          <ul>
+            <li>Artificial Intelligence</li>
+            <li>Deep Learning</li>
+            <li>Computer Vision</li>
+            <li>Machine Learning</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Projects ===== -->
+    <section id="projects">
+      <h2>Academic Projects</h2>
+      <div class="projects">
+
+        <div class="project">
+          <div class="head">
+            <h3>64-Bit RISC-V Pipelined CPU &amp; Cache Architecture</h3>
+            <span class="date">Spring 2026</span>
+          </div>
+          <div class="stack">Verilog, Vivado, C</div>
+          <ul>
+            <li>Designed and implemented a 64-bit RISC-V CPU from single-cycle to a
+                5-stage pipelined architecture in Verilog; resolved data and control
+                hazards via a custom forwarding unit and static branch predictor
+                relocated to the ID stage.</li>
+            <li>Developed a 2-level inclusive cache simulator in C, evaluating LRU
+                and FIFO eviction policies on realistic memory access traces.</li>
+          </ul>
+        </div>
+
+        <div class="project">
+          <div class="head">
+            <h3>Matrix Multiplication Optimization on RISC-V</h3>
+            <span class="date">Spring 2026</span>
+          </div>
+          <div class="stack">C, RISC-V Assembly</div>
+          <ul>
+            <li>Optimized 1024×1024×4096 matrix multiplication on a RISC-V 64GC
+                processor, applying cache blocking, loop unrolling, loop reordering,
+                and RISC-V SIMD inline assembly to maximize computational throughput.</li>
+          </ul>
+        </div>
+
+        <div class="project">
+          <div class="head">
+            <h3>SportsCare</h3>
+            <span class="date">May 2026 – Present</span>
+          </div>
+          <div class="stack">Java, Android Studio, Firebase, Python, MediaPipe</div>
+          <ul>
+            <li>Developing an AI-powered Android app that analyzes user-uploaded
+                sports videos to provide posture correction feedback as a personal
+                training assistant.</li>
+            <li>Implemented Firebase Authentication, gallery video upload to
+                Firebase Storage, and real-time Firestore listener for receiving
+                AI analysis results.</li>
+          </ul>
+        </div>
+
+        <div class="project">
+          <div class="head">
+            <h3>MCMC Estimation of Average Independent Set Size</h3>
+            <span class="date">May 2026 – Present</span>
+          </div>
+          <div class="stack">Python</div>
+          <ul>
+            <li>Applying Markov Chain Monte Carlo (Glauber dynamics) to estimate
+                average independent set sizes under the hard-core model, as a
+                graduate-level Advanced Algorithms final project.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== Skills ===== -->
+    <section id="skills" class="skills">
+      <h2>Technical Skills</h2>
+      <p><span class="label">Languages</span> Python, Java, C++, Verilog, RISC-V Assembly</p>
+      <p><span class="label">Developer Tools</span> VS Code, Android Studio, Vivado, Docker, Google Colab</p>
+    </section>
+
+    <!-- ===== Extracurricular ===== -->
+    <section id="extra" class="extra">
+      <h2>Extracurricular</h2>
+
+      <div class="item">
+        <div class="head">
+          <h3>Club Soccer301 — Secretary</h3>
+          <span class="date">Fall 2024 – Present</span>
+        </div>
+        <div class="role">Seoul National University</div>
+        <p>Organize and manage club activities, including scheduling meetings and
+           coordinating events.</p>
+      </div>
+
+      <div class="item">
+        <div class="head">
+          <h3>Campus Mentoring Program — Mentor</h3>
+          <span class="date">Sep. 2025 – Dec. 2025</span>
+        </div>
+        <div class="role">Seoul National University</div>
+        <p>Mentored 2 incoming students on academic planning and campus
+           adjustment through regular one-on-one sessions.</p>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <ul>
+        <li><span class="label">Email</span> <a href="mailto:winno94@snu.ac.kr">winno94@snu.ac.kr</a></li>
+        <li><span class="label">Phone</span> +82 10 2315 3965</li>
+        <li><span class="label">GitHub</span> <a href="https://github.com/winno94" target="_blank" rel="noopener">github.com/winno94</a></li>
+        <li><span class="label">CV</span> <a href="assets/cv.pdf" target="_blank" rel="noopener">Download PDF</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Seokhyeon Lee · Hosted on GitHub Pages
+  </footer>
 </body>
 </html>
