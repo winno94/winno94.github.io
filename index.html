@@ -4,659 +4,491 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Seokhyeon Lee — Personal Page</title>
-  <meta name="description" content="Seokhyeon Lee — CSE undergraduate at Seoul National University, interested in physical AI, computer vision, and efficient large-scale language models." />
+  <meta name="description" content="Seokhyeon Lee — CSE undergraduate at Seoul National University." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* ==========================================================
-       EDITORIAL MINIMAL — cream / charcoal / burnt accent
-       Distinctive signature: serif display + numbered sections
-       ========================================================== */
     :root {
-      --bg: #f6f3ec;          /* warm cream */
-      --bg-elev: #ffffff;     /* card surface */
-      --fg: #1a1a1a;          /* near-black */
-      --muted: #6b6b6b;
-      --line: #d8d2c3;        /* muted dividers */
-      --accent: #b8431d;      /* burnt sienna */
-      --accent-soft: #e7c8b6;
-      --max-w: 820px;
-      --radius: 4px;
+      --bg: #ffffff;
+      --bg-warm: #f6f5f4;
+      --fg: rgba(0,0,0,0.95);
+      --muted: #615d59;
+      --muted-2: #a39e98;
+      --line: rgba(0,0,0,0.1);
+      --accent: #0075de;
+      --accent-hover: #005bab;
+      --badge-bg: #f2f9ff;
+      --badge-fg: #097fe8;
+      --max-w: 1080px;
+      --card-shadow:
+        rgba(0,0,0,0.04) 0 4px 18px,
+        rgba(0,0,0,0.027) 0 2.025px 7.847px,
+        rgba(0,0,0,0.02) 0 0.8px 2.925px,
+        rgba(0,0,0,0.01) 0 0.175px 1.041px;
     }
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
     body {
       background: var(--bg);
       color: var(--fg);
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
-      line-height: 1.65;
+      font-family: "Inter", -apple-system, system-ui, "Segoe UI", Helvetica, "Noto Sans KR", Arial, sans-serif;
+      font-feature-settings: "lnum", "locl";
       font-size: 16px;
+      line-height: 1.5;
       -webkit-font-smoothing: antialiased;
-      background-image:
-        radial-gradient(circle at 1px 1px, rgba(0,0,0,0.04) 1px, transparent 0);
-      background-size: 24px 24px;
     }
     a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { text-decoration: underline; }
 
-    /* ---------- Top bar ---------- */
     nav {
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: 28px 32px 0;
+      padding: 24px 32px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      font-size: 15px;
+      font-weight: 600;
     }
-    nav .brand {
-      font-family: "JetBrains Mono", monospace;
-      font-weight: 500;
-      color: var(--fg);
-    }
-    nav .brand::before {
-      content: "■ ";
-      color: var(--accent);
-    }
-    nav .links a { color: var(--muted); margin-left: 22px; }
-    nav .links a:hover { color: var(--fg); text-decoration: none; }
+    nav .brand { color: var(--fg); }
+    nav .links a { color: var(--fg); margin-left: 24px; font-weight: 500; }
+    nav .links a:hover { color: var(--accent); text-decoration: none; }
 
-    main {
+    .hero {
       max-width: var(--max-w);
       margin: 0 auto;
       padding: 80px 32px 96px;
-    }
-
-    /* ---------- HERO — editorial nameplate ---------- */
-    .hero {
       display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 36px;
+      grid-template-columns: 1fr auto;
+      gap: 64px;
       align-items: center;
-      margin-bottom: 96px;
-      position: relative;
-      padding-left: 24px;
     }
-    .hero::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 8px;
-      bottom: 8px;
-      width: 3px;
-      background: var(--accent);
-    }
-    .hero img {
-      width: 140px;
-      height: 180px;
-      object-fit: cover;
-      background: var(--accent-soft);
-      filter: grayscale(0.15) contrast(1.05);
-    }
-    .hero .kicker {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-    .hero .kicker .dot { color: var(--accent); }
     .hero h1 {
-      font-family: "Fraunces", "Times New Roman", serif;
-      font-weight: 600;
       font-size: 64px;
-      line-height: 0.95;
-      letter-spacing: -0.025em;
-      margin: 0 0 18px;
-    }
-    .hero h1 em {
-      font-style: italic;
-      color: var(--accent);
-      font-weight: 500;
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -2.125px;
+      margin: 0 0 20px;
     }
     .hero .sub {
-      font-size: 16px;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.4;
+      letter-spacing: -0.125px;
       color: var(--muted);
-      margin: 0 0 22px;
-      max-width: 38ch;
+      margin: 0 0 28px;
+      max-width: 42ch;
     }
-    .hero .cta a {
+    .hero .cta { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn {
       display: inline-block;
       padding: 10px 18px;
-      margin-right: 8px;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      border: 1px solid var(--fg);
-      color: var(--fg);
-      transition: all 0.18s ease;
+      border-radius: 4px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: all 0.15s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
     }
-    .hero .cta a.primary {
-      background: var(--fg);
-      color: var(--bg);
-    }
-    .hero .cta a:hover {
-      text-decoration: none;
+    .btn-primary {
       background: var(--accent);
-      border-color: var(--accent);
       color: #fff;
     }
+    .btn-primary:hover { background: var(--accent-hover); text-decoration: none; }
+    .btn-secondary {
+      background: rgba(0,0,0,0.05);
+      color: var(--fg);
+    }
+    .btn-secondary:hover { background: rgba(0,0,0,0.08); text-decoration: none; }
 
-    /* ---------- Section headers (numbered) ---------- */
-    section { margin-bottom: 72px; }
-    .section-head {
-      display: flex;
-      align-items: baseline;
-      gap: 16px;
-      margin-bottom: 28px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--line);
-    }
-    .section-head .num {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 12px;
-      color: var(--accent);
-      font-weight: 500;
-    }
-    .section-head h2 {
-      font-family: "Fraunces", serif;
-      font-weight: 500;
-      font-size: 26px;
-      letter-spacing: -0.01em;
-      margin: 0;
-    }
-    .section-head .rule {
-      flex: 1;
-      height: 1px;
-      background: var(--line);
-      align-self: center;
-      margin-left: 8px;
-    }
-
-    /* ---------- About ---------- */
-    .about p {
-      font-size: 17px;
-      line-height: 1.7;
-      max-width: 62ch;
-      margin: 0;
-    }
-    .about strong { color: var(--accent); font-weight: 600; }
-
-    /* ---------- Education ---------- */
-    .edu .school {
-      font-family: "Fraunces", serif;
-      font-size: 22px;
-      font-weight: 500;
-      margin: 0 0 4px;
-    }
-    .edu .degree { margin: 0 0 2px; }
-    .edu .date {
-      font-family: "JetBrains Mono", monospace;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .coursework {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      margin-top: 28px;
-    }
-    .coursework h4 {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-weight: 500;
-      margin: 0 0 10px;
-      color: var(--muted);
-    }
-    .coursework ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      font-size: 14px;
-    }
-    .coursework li {
-      padding: 4px 0;
-      border-bottom: 1px dotted var(--line);
-    }
-    .coursework li:last-child { border-bottom: none; }
-    @media (max-width: 640px) {
-      .coursework { grid-template-columns: 1fr; }
-    }
-
-    /* ---------- Projects ---------- */
-    .project {
-      padding: 24px 0;
-      border-bottom: 1px solid var(--line);
-    }
-    .project:last-child { border-bottom: none; }
-    .project .head {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 6px;
-    }
-    .project h3 {
-      font-family: "Fraunces", serif;
-      font-weight: 500;
-      font-size: 22px;
-      letter-spacing: -0.01em;
-      margin: 0;
-    }
-    .project .date {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 12px;
-      color: var(--muted);
-      white-space: nowrap;
-      letter-spacing: 0.04em;
-    }
-    .project .stack {
-      margin: 4px 0 14px;
-    }
-    .project .stack span {
-      display: inline-block;
-      font-family: "JetBrains Mono", monospace;
-      font-size: 11px;
-      padding: 3px 9px;
-      margin: 0 4px 4px 0;
-      background: var(--bg-elev);
+    .hero img {
+      width: 220px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 12px;
       border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--muted);
-    }
-    .project ul {
-      margin: 0;
-      padding-left: 0;
-      list-style: none;
-      font-size: 15px;
-      color: #333;
-    }
-    .project li {
-      padding-left: 20px;
-      position: relative;
-      margin-bottom: 8px;
-    }
-    .project li::before {
-      content: "→";
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-family: "JetBrains Mono", monospace;
+      box-shadow: var(--card-shadow);
+      background: var(--bg-warm);
     }
 
-    /* ---------- Skills ---------- */
-    .skills .row { margin-bottom: 10px; }
-    .skills .label {
-      display: inline-block;
-      width: 130px;
-      font-family: "JetBrains Mono", monospace;
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      vertical-align: top;
-      padding-top: 2px;
+    section {
+      padding: 80px 0;
     }
-    .skills .value { font-size: 15px; }
-
-    /* ---------- Extracurricular ---------- */
-    .extra .item { padding: 18px 0; border-bottom: 1px solid var(--line); }
-    .extra .item:last-child { border-bottom: none; }
-    .extra .head {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 12px;
+    section.warm {
+      background: var(--bg-warm);
     }
-    .extra h3 {
-      font-family: "Fraunces", serif;
-      font-weight: 500;
-      margin: 0;
-      font-size: 18px;
-    }
-    .extra .role {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin: 4px 0 8px;
-    }
-    .extra .date {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 12px;
-      color: var(--muted);
-    }
-    .extra p { margin: 0; font-size: 14px; color: #333; }
-
-    /* ---------- AI Usage ---------- */
-    .ai-usage {
-      background: var(--bg-elev);
-      padding: 28px;
-      border: 1px solid var(--line);
-      border-left: 3px solid var(--accent);
-      margin-bottom: 72px;
-    }
-    .ai-usage .section-head {
-      margin: 0 0 16px;
-      padding: 0 0 12px;
-    }
-    .ai-usage p { margin: 0 0 10px; font-size: 14px; }
-    .ai-usage .row { display: flex; gap: 12px; margin-bottom: 8px; }
-    .ai-usage .label {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      flex: 0 0 70px;
-      padding-top: 3px;
-    }
-    .ai-usage .val { flex: 1; font-size: 14px; }
-    .ai-usage em { font-style: italic; color: #333; }
-
-    /* ---------- Contact ---------- */
-    .contact ul { list-style: none; padding: 0; margin: 0; }
-    .contact li {
-      display: flex;
-      gap: 16px;
-      padding: 10px 0;
-      border-bottom: 1px dotted var(--line);
-      font-size: 15px;
-    }
-    .contact li:last-child { border-bottom: none; }
-    .contact .label {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      flex: 0 0 80px;
-      padding-top: 4px;
-    }
-
-    /* ---------- Footer ---------- */
-    footer {
+    .container {
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: 32px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      text-align: center;
-      font-family: "JetBrains Mono", monospace;
+      padding: 0 32px;
     }
-    footer::before {
-      content: "■";
-      color: var(--accent);
-      margin-right: 8px;
+    h2 {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -1.5px;
+      margin: 0 0 16px;
+    }
+    .lead {
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.4;
+      letter-spacing: -0.125px;
+      color: var(--muted);
+      margin: 0 0 40px;
+      max-width: 62ch;
     }
 
-    /* ---------- Responsive ---------- */
-    @media (max-width: 640px) {
-      main { padding: 56px 22px 72px; }
-      .hero { grid-template-columns: 1fr; gap: 24px; margin-bottom: 64px; }
-      .hero img { width: 110px; height: 140px; }
-      .hero h1 { font-size: 44px; }
-      nav { padding: 22px 22px 0; font-size: 11px; }
-      nav .links a { margin-left: 14px; }
-      .section-head h2 { font-size: 22px; }
-      .project h3 { font-size: 19px; }
+    .about p {
+      font-size: 17px;
+      line-height: 1.6;
+      max-width: 62ch;
+      margin: 0 0 16px;
+    }
+    .about strong { color: var(--fg); font-weight: 600; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 36px;
+    }
+    .info-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: var(--card-shadow);
+    }
+    .info-card h3 {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.125px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin: 0 0 14px;
+    }
+    .info-card p.school {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 4px;
+    }
+    .info-card p.degree { margin: 0 0 4px; color: var(--fg); font-size: 15px; }
+    .info-card p.date { margin: 0; color: var(--muted); font-size: 14px; }
+    .info-card .skill-line { font-size: 15px; margin: 0 0 8px; }
+    .info-card .skill-line .label {
+      display: inline-block;
+      width: 100px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+    }
+    @media (max-width: 720px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 720px) {
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+    .project-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: var(--card-shadow);
+      transition: box-shadow 0.18s ease, transform 0.18s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        rgba(0,0,0,0.01) 0 1px 3px,
+        rgba(0,0,0,0.02) 0 3px 7px,
+        rgba(0,0,0,0.02) 0 7px 15px,
+        rgba(0,0,0,0.04) 0 14px 28px;
+    }
+    .project-card .date {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.125px;
+      text-transform: uppercase;
+      color: var(--muted-2);
+      margin: 0 0 8px;
+    }
+    .project-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.25px;
+      line-height: 1.27;
+      margin: 0 0 14px;
+    }
+    .tags { margin: 0 0 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      display: inline-block;
+      background: var(--badge-bg);
+      color: var(--badge-fg);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.125px;
+      padding: 4px 10px;
+      border-radius: 9999px;
+    }
+    .project-card ul {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+    .project-card ul li { margin-bottom: 6px; }
+    .project-card ul li::marker { color: var(--muted-2); }
+
+    .ai-usage .ai-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: var(--card-shadow);
+      max-width: 720px;
+    }
+    .ai-usage .row { display: flex; gap: 16px; padding: 6px 0; font-size: 16px; }
+    .ai-usage .row .key {
+      flex: 0 0 80px;
+      font-weight: 700;
+      color: var(--fg);
+    }
+    .ai-usage .row .val { color: var(--muted); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      max-width: 720px;
+    }
+    @media (max-width: 720px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    .contact-item {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 18px 20px;
+      box-shadow: var(--card-shadow);
+    }
+    .contact-item .key {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.125px;
+      text-transform: uppercase;
+      color: var(--muted-2);
+      margin: 0 0 4px;
+    }
+    .contact-item .val { font-size: 16px; font-weight: 500; }
+    .contact-item .val a { color: var(--accent); }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 32px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 48px 24px 64px;
+      }
+      .hero img { width: 160px; height: 200px; }
+      .hero h1 { font-size: 40px; letter-spacing: -1.25px; }
+      .hero .sub { font-size: 18px; }
+      h2 { font-size: 32px; letter-spacing: -1px; }
+      section { padding: 56px 0; }
+      .container { padding: 0 24px; }
+      nav { padding: 20px 24px; }
+      nav .links a { margin-left: 16px; }
     }
   </style>
 </head>
 <body>
   <nav>
-    <div class="brand">SL / 2026</div>
+    <div class="brand">Seokhyeon Lee</div>
     <div class="links">
-      <a href="#about">About</a>
-      <a href="#education">Education</a>
-      <a href="#projects">Work</a>
-      <a href="#ai-usage">AI</a>
+      <a href="#about">About Me</a>
+      <a href="#projects">Projects</a>
+      <a href="#ai-usage">AI Usage</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
 
-  <main>
-
-    <!-- ===== HERO ===== -->
-    <section class="hero">
-      <img src="assets/profile.jpg" alt="Seokhyeon Lee"
-           onerror="this.style.background='var(--accent-soft)';this.removeAttribute('src');" />
-      <div>
-        <div class="kicker">CSE <span class="dot">●</span> Seoul National University <span class="dot">●</span> Class of 2028</div>
-        <h1>Seokhyeon<br/><em>Lee</em></h1>
-        <p class="sub">Undergraduate researcher exploring physical AI, computer vision, and efficient large-scale language models.</p>
-        <div class="cta">
-          <a class="primary" href="assets/cv.pdf" target="_blank" rel="noopener">View CV →</a>
-          <a href="#contact">Get in touch</a>
-        </div>
+  <header class="hero">
+    <div>
+      <h1>Seokhyeon Lee</h1>
+      <p class="sub">B.S. in Computer Science &amp; Engineering at Seoul National University. Interested in physical AI, computer vision, and efficient large-scale language models.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="assets/cv.pdf" target="_blank" rel="noopener">View CV</a>
+        <a class="btn btn-secondary" href="#contact">Get in touch</a>
       </div>
-    </section>
+    </div>
+    <img src="assets/profile.jpg" alt="Seokhyeon Lee"
+         onerror="this.style.background='var(--bg-warm)';this.removeAttribute('src');" />
+  </header>
 
-    <!-- ===== About ===== -->
-    <section id="about" class="about">
-      <div class="section-head">
-        <span class="num">01</span>
-        <h2>About</h2>
-        <span class="rule"></span>
-      </div>
+  <section id="about" class="about warm">
+    <div class="container">
+      <h2>About Me</h2>
+      <p class="lead">Third-year undergraduate at Seoul National University, building toward AI systems that are both practically impactful and computationally sustainable.</p>
+
       <p>
-        Third-year undergraduate in Computer Science and Engineering at Seoul
-        National University. Passionate about <strong>physical AI</strong>,
-        leveraging <strong>computer vision</strong> to improve human quality of
-        life, and building <strong>efficient large-scale language models</strong>.
-        Eager to advance AI systems that are both practically impactful and
-        computationally sustainable.
+        I'm passionate about <strong>physical AI</strong>, leveraging
+        <strong>computer vision</strong> to improve human quality of life,
+        and building <strong>efficient large-scale language models</strong>.
+        I enjoy turning small ideas into working software — from low-level
+        Verilog to full-stack Android apps — and I'm always curious about
+        how systems thinking can make AI more useful and sustainable.
       </p>
-    </section>
 
-    <!-- ===== Education ===== -->
-    <section id="education" class="edu">
-      <div class="section-head">
-        <span class="num">02</span>
-        <h2>Education</h2>
-        <span class="rule"></span>
+      <div class="about-grid">
+        <div class="info-card">
+          <h3>Education</h3>
+          <p class="school">Seoul National University</p>
+          <p class="degree">B.S. — Computer Science &amp; Engineering</p>
+          <p class="date">Mar 2024 — Present</p>
+        </div>
+        <div class="info-card">
+          <h3>Technical Skills</h3>
+          <p class="skill-line"><span class="label">Languages</span>Python · Java · C++ · Verilog · RISC-V Asm</p>
+          <p class="skill-line"><span class="label">Tools</span>VS Code · Android Studio · Vivado · Docker · Colab</p>
+        </div>
       </div>
-      <p class="school">Seoul National University</p>
-      <p class="degree">B.S. — Department of Computer Science and Engineering</p>
-      <p class="date">Mar 2024 — Present</p>
+    </div>
+  </section>
 
-      <div class="coursework">
-        <div>
-          <h4>Completed</h4>
+  <section id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <p class="lead">Selected academic and personal projects from coursework and side work.</p>
+
+      <div class="projects-grid">
+
+        <article class="project-card">
+          <p class="date">Spring 2026</p>
+          <h3>64-Bit RISC-V Pipelined CPU &amp; Cache</h3>
+          <div class="tags">
+            <span class="tag">Verilog</span>
+            <span class="tag">Vivado</span>
+            <span class="tag">C</span>
+          </div>
           <ul>
-            <li>Logic Design</li>
-            <li>Computer Programming</li>
-            <li>Discrete Mathematics</li>
-            <li>Algorithms</li>
-            <li>AI and Law</li>
+            <li>Implemented a 64-bit RISC-V CPU from single-cycle to a 5-stage
+                pipelined architecture; resolved data and control hazards via a
+                custom forwarding unit and ID-stage branch predictor.</li>
+            <li>Built a 2-level inclusive cache simulator in C, evaluating LRU
+                and FIFO eviction on realistic memory traces.</li>
           </ul>
-        </div>
-        <div>
-          <h4>In Progress</h4>
+        </article>
+
+        <article class="project-card">
+          <p class="date">Spring 2026</p>
+          <h3>Matrix Multiplication on RISC-V</h3>
+          <div class="tags">
+            <span class="tag">C</span>
+            <span class="tag">RISC-V Asm</span>
+          </div>
           <ul>
-            <li>Data Structure</li>
-            <li>Computer Architecture</li>
-            <li>Advanced Algorithms (grad.)</li>
+            <li>Optimized 1024×1024×4096 matmul on RISC-V 64GC using cache
+                blocking, loop unrolling, loop reordering, and SIMD inline
+                assembly for maximum throughput.</li>
           </ul>
-        </div>
-        <div>
-          <h4>Planned</h4>
-          <ul>
-            <li>Artificial Intelligence</li>
-            <li>Deep Learning</li>
-            <li>Computer Vision</li>
-            <li>Machine Learning</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+        </article>
 
-    <!-- ===== Projects ===== -->
-    <section id="projects">
-      <div class="section-head">
-        <span class="num">03</span>
-        <h2>Selected Work</h2>
-        <span class="rule"></span>
-      </div>
-
-      <div class="project">
-        <div class="head">
-          <h3>64-Bit RISC-V Pipelined CPU &amp; Cache Architecture</h3>
-          <span class="date">Spring 2026</span>
-        </div>
-        <div class="stack">
-          <span>Verilog</span><span>Vivado</span><span>C</span>
-        </div>
-        <ul>
-          <li>Designed and implemented a 64-bit RISC-V CPU from single-cycle to a
-              5-stage pipelined architecture in Verilog; resolved data and control
-              hazards via a custom forwarding unit and static branch predictor
-              relocated to the ID stage.</li>
-          <li>Developed a 2-level inclusive cache simulator in C, evaluating LRU
-              and FIFO eviction policies on realistic memory access traces.</li>
-        </ul>
-      </div>
-
-      <div class="project">
-        <div class="head">
-          <h3>Matrix Multiplication Optimization on RISC-V</h3>
-          <span class="date">Spring 2026</span>
-        </div>
-        <div class="stack">
-          <span>C</span><span>RISC-V Asm</span>
-        </div>
-        <ul>
-          <li>Optimized 1024×1024×4096 matrix multiplication on a RISC-V 64GC
-              processor, applying cache blocking, loop unrolling, loop reordering,
-              and RISC-V SIMD inline assembly to maximize computational throughput.</li>
-        </ul>
-      </div>
-
-      <div class="project">
-        <div class="head">
+        <article class="project-card">
+          <p class="date">May 2026 — Present</p>
           <h3>SportsCare</h3>
-          <span class="date">May 2026 — Present</span>
+          <div class="tags">
+            <span class="tag">Android</span>
+            <span class="tag">Java</span>
+            <span class="tag">Firebase</span>
+            <span class="tag">MediaPipe</span>
+          </div>
+          <ul>
+            <li>Building an AI-powered Android app that analyzes uploaded
+                sports videos to give posture-correction feedback.</li>
+            <li>Implemented Firebase Auth, video upload to Storage, and
+                real-time Firestore listener for AI analysis results.</li>
+          </ul>
+        </article>
+
+        <article class="project-card">
+          <p class="date">May 2026 — Present</p>
+          <h3>MCMC for Independent Set Size</h3>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Glauber Dynamics</span>
+          </div>
+          <ul>
+            <li>Applying MCMC under the hard-core model to estimate average
+                independent set sizes — grad-level Advanced Algorithms
+                final project.</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="ai-usage" class="ai-usage warm">
+    <div class="container">
+      <h2>AI Usage</h2>
+      <p class="lead">I wrote the content; I used an AI assistant only for the visual design.</p>
+
+      <div class="ai-card">
+        <div class="row">
+          <span class="key">Tool</span>
+          <span class="val">Claude Code</span>
         </div>
-        <div class="stack">
-          <span>Java</span><span>Android</span><span>Firebase</span><span>Python</span><span>MediaPipe</span>
+        <div class="row">
+          <span class="key">Prompt</span>
+          <span class="val">Style my personal site using the Notion DESIGN.md from getdesign.md.</span>
         </div>
-        <ul>
-          <li>Developing an AI-powered Android app that analyzes user-uploaded
-              sports videos to provide posture correction feedback as a personal
-              training assistant.</li>
-          <li>Implemented Firebase Authentication, gallery video upload to
-              Firebase Storage, and real-time Firestore listener for receiving
-              AI analysis results.</li>
-        </ul>
       </div>
+    </div>
+  </section>
 
-      <div class="project">
-        <div class="head">
-          <h3>MCMC Estimation of Average Independent Set Size</h3>
-          <span class="date">May 2026 — Present</span>
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <p class="lead">Feel free to reach out.</p>
+
+      <div class="contact-grid">
+        <div class="contact-item">
+          <p class="key">Email</p>
+          <p class="val"><a href="mailto:winno94@snu.ac.kr">winno94@snu.ac.kr</a></p>
         </div>
-        <div class="stack">
-          <span>Python</span>
+        <div class="contact-item">
+          <p class="key">Phone</p>
+          <p class="val">+82 10 2315 3965</p>
         </div>
-        <ul>
-          <li>Applying Markov Chain Monte Carlo (Glauber dynamics) to estimate
-              average independent set sizes under the hard-core model, as a
-              graduate-level Advanced Algorithms final project.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ===== Skills ===== -->
-    <section id="skills" class="skills">
-      <div class="section-head">
-        <span class="num">04</span>
-        <h2>Technical Stack</h2>
-        <span class="rule"></span>
-      </div>
-      <div class="row"><span class="label">Languages</span><span class="value">Python · Java · C++ · Verilog · RISC-V Assembly</span></div>
-      <div class="row"><span class="label">Dev Tools</span><span class="value">VS Code · Android Studio · Vivado · Docker · Google Colab</span></div>
-    </section>
-
-    <!-- ===== Extracurricular ===== -->
-    <section id="extra" class="extra">
-      <div class="section-head">
-        <span class="num">05</span>
-        <h2>Beyond Coursework</h2>
-        <span class="rule"></span>
-      </div>
-
-      <div class="item">
-        <div class="head">
-          <h3>Club Soccer301</h3>
-          <span class="date">Fall 2024 — Present</span>
+        <div class="contact-item">
+          <p class="key">GitHub</p>
+          <p class="val"><a href="https://github.com/winno94" target="_blank" rel="noopener">github.com/winno94</a></p>
         </div>
-        <div class="role">Secretary · Seoul National University</div>
-        <p>Organize and manage club activities, including scheduling meetings
-           and coordinating events.</p>
-      </div>
-
-      <div class="item">
-        <div class="head">
-          <h3>Campus Mentoring Program</h3>
-          <span class="date">Sep 2025 — Dec 2025</span>
+        <div class="contact-item">
+          <p class="key">CV</p>
+          <p class="val"><a href="assets/cv.pdf" target="_blank" rel="noopener">Download PDF</a></p>
         </div>
-        <div class="role">Mentor · Seoul National University</div>
-        <p>Mentored 2 incoming students on academic planning and campus
-           adjustment through regular one-on-one sessions.</p>
       </div>
-    </section>
-
-    <!-- ===== AI Usage ===== -->
-    <section id="ai-usage" class="ai-usage">
-      <div class="section-head">
-        <span class="num">06</span>
-        <h2>AI Usage</h2>
-      </div>
-      <p>
-        I wrote every word of content on this site myself. I used an AI coding
-        assistant <em>only for the visual design</em> — typography, color system,
-        spacing, and the responsive CSS layout.
-      </p>
-      <div class="row">
-        <span class="label">Tool</span>
-        <span class="val">Claude (Anthropic)</span>
-      </div>
-      <div class="row">
-        <span class="label">Prompt</span>
-        <span class="val"><em>"Design a distinctive minimal personal site — editorial / magazine feel. Cream background, charcoal type, one burnt-sienna accent. Use a serif display face for the name and section titles, monospace for dates and tags. Add numbered section headers (01, 02, …), a vertical accent bar next to the hero, and pill-shaped tech tags. Keep it fully responsive. Do not change my content."</em></span>
-      </div>
-    </section>
-
-    <!-- ===== Contact ===== -->
-    <section id="contact" class="contact">
-      <div class="section-head">
-        <span class="num">07</span>
-        <h2>Contact</h2>
-        <span class="rule"></span>
-      </div>
-      <ul>
-        <li><span class="label">Email</span> <a href="mailto:winno94@snu.ac.kr">winno94@snu.ac.kr</a></li>
-        <li><span class="label">Phone</span> <span>+82 10 2315 3965</span></li>
-        <li><span class="label">GitHub</span> <a href="https://github.com/winno94" target="_blank" rel="noopener">github.com/winno94</a></li>
-        <li><span class="label">CV</span> <a href="assets/cv.pdf" target="_blank" rel="noopener">Download PDF</a></li>
-      </ul>
-    </section>
-  </main>
+    </div>
+  </section>
 
   <footer>
-    Seokhyeon Lee — 2026 — Hosted on GitHub Pages
+    © 2026 Seokhyeon Lee · Hosted on GitHub Pages
   </footer>
 </body>
 </html>
